@@ -1,5 +1,5 @@
 from django.db import models
-
+from datetime import date
 
 class Todo(models.Model):
     title = models.CharField(
@@ -8,3 +8,11 @@ class Todo(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, null=False, blank=True)
     deadline = models.DateField(verbose_name="Data de entrega", null=False, blank=False)
     finished_at = models.DateField(null=True)
+
+    class Meta:
+        ordering = ["deadline"]
+
+    def mark_has_completed(self):
+        if not self.finished_at:
+            self.finished_at = date.today()
+            self.save()
