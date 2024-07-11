@@ -1,5 +1,4 @@
 {
-    "editor.formatOnPaste": true,
     "files.associations": {
         "**/templates/**/*.html": "django-html"
     },
